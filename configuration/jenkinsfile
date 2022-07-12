@@ -21,7 +21,7 @@ timestamps {
         timeout(5) {
             node {
                 stage('PREPARE') {
-                    echo "\u001B[32mПодготовка к запуску Unit-тестов\u001B[m"
+                    echo "\u001B[32 Git checkout \u001B[m"
                     checkout changelog: true, poll: true, scm: [
                             $class                           : 'GitSCM',
                             branches                         : gitBranches,
@@ -34,7 +34,7 @@ timestamps {
                 }
 
                 stage('UNIT-TEST') {
-                    echo "\u001B[32mЗапускККК Unit-тестов и код-стайл плагинов\u001B[m"
+                    echo "\u001B[32m Maven сборка\u001B[m"
                     echo "BRANCH " + fromBranch
                     sh "mvn --help"
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
