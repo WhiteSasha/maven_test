@@ -18,8 +18,8 @@ def javaVersion = 'openjdk-11'
 
 timestamps {
     ansiColor('xterm') {
-        timeout(60) {
-            node('Linux_Default') {
+        timeout(5) {
+            node {
                 stage('PREPARE') {
                     echo "\u001B[32mПодготовка к запуску Unit-тестов\u001B[m"
                     checkout changelog: true, poll: true, scm: [
