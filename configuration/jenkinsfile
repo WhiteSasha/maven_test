@@ -1,0 +1,75 @@
+def gitCredentialsId = 'WhiteSasha_SB_pass'
+def gitUrl = 'https://github.com/WhiteSasha/maven_test.git'
+def fromBranch = params.PULL_REQUEST_FROM_BRANCH
+    // -e - Вывод ошибок, -X Вывод дебаг логов
+    // Сборка с тестами  и сонаром
+def mvnTargetsUnit = 'clean -am install sonar:sonar -P unit-test -e -X'
+    // сборка без юнит тестов и сонара
+//def mvnTargetsUnit = 'clean install -DskipTests=true'
+    // сборка с тестами
+//def  mvnTargetsUnit = 'clean install'
+def mvnOptions = []
+def gitBranches = [[name: fromBranch]]
+def gitExtensions = []
+def mavenSettingPath = 'configuration/sigma/settings.xml'
+def mavenSettingSecurityPath = 'configuration/sigma/settings-security.xml'
+def mavenVersion = 'Maven 3.6.1'
+def javaVersion = 'openjdk-11'
+
+timestamps {
+    ansiColor('xterm') {
+        timeout(60) {
+            node('Linux_Default') {
+                stage('PREPARE') {
+                    echo "\u001B[32mПодготовка к запуску Unit-тестов\u001B[m"
+                    checkout changelog: true, poll: true, scm: [
+                            $class                           : 'GitSCM',
+                            branches                         : gitBranches,
+                            doGenerateSubmoduleConfigurations: false,
+                            extensions                       : gitExtensions,
+                            gitTool                          : 'Default',
+                            submoduleCfg                     : [],
+                            userRemoteConfigs                : [[credentialsId: gitCredentialsId, url: gitUrl]]]
+                    notifyBitbucket 'INPROGRESS'
+                }
+
+                stage('UNIT-TEST') {
+                    echo "\u001B[32mЗапускККК Unit-тестов и код-стайл плагинов\u001B[m"
+                    echo "BRANCH " + fromBranch
+//                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
+/*
+                    try {
+                        mvnOptions << "-Dsonar.branch.name=$fromBranch"
+                        mvnOptions << "-Dsettings.security=$mavenSettingSecurityPath"
+                        withMaven(jdk: javaVersion, maven: mavenVersion, mavenSettingsFilePath: mavenSettingPath) {
+                            sh "mvn ${mvnOptions.join(' ')} $mvnTargetsUnit"
+                        }
+                        notifyBitbucket 'SUCCESS'
+                    } catch (err) {
+                        notifyBitbucket 'FAILED'
+                        echo err
+                    }
+ */              
+                }
+ 
+            }
+        }
+    }
+}
+
+def notifyBitbucket(String state) {
+    if ('SUCCESS' == state || 'FAILED' == state) {
+        currentBuild.result = state
+    }
+
+    step([$class                       : 'StashNotifier',
+          commitSha1                   : '',
+          credentialsId                : 'CAB-SA-CI002157',
+          disableInprogressNotification: false,
+          considerUnstableAsSuccess    : false,
+          ignoreUnverifiedSSLPeer      : false,
+          includeBuildNumberInKey      : false,
+          prependParentProjectKey      : false,
+          projectKey                   : '',
+          stashServerBaseUrl           : 'https://stash.sigma.sbrf.ru/'])
+}
