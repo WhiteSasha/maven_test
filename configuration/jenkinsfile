@@ -37,8 +37,12 @@ timestamps {
                     echo "\u001B[32m Maven сборка\u001B[m"
                     echo "BRANCH " + fromBranch
                     sh "echo '!!!=== Тут должен быть maven ===!!!'"
-                    sh "mvn -version"
+//                    sh "mvn -version"
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
+                    
+                    withMaven(jdk: javaVersion, maven: mavenVersion, mavenSettingsFilePath: mavenSettingPath) {
+                            sh "mvn --version"
+                        }
 /*
                     try {
                         mvnOptions << "-Dsonar.branch.name=$fromBranch"
