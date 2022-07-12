@@ -64,7 +64,7 @@ def notifyBitbucket(String state) {
 
     step([$class                       : 'StashNotifier',
           commitSha1                   : '',
-          credentialsId                : 'CAB-SA-CI002157',
+          credentialsId                : 'WhiteSasha_SB_pass',
           disableInprogressNotification: false,
           considerUnstableAsSuccess    : false,
           ignoreUnverifiedSSLPeer      : false,
