@@ -36,7 +36,7 @@ timestamps {
                 stage('UNIT-TEST') {
                     echo "\u001B[32m Maven сборка\u001B[m"
                     echo "BRANCH " + fromBranch
-                    sh "mvn --help"
+                    sh "echo '!!!=== Тут должен быть maven ===!!!'"
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
 /*
                     try {
