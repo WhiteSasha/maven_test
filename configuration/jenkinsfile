@@ -40,7 +40,7 @@ timestamps {
 //                    sh "mvn -version"
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
                     
-                    withMaven(jdk: javaVersion, maven: mavenVersion, mavenSettingsFilePath: mavenSettingPath) {
+                    withMaven(jdk: javaVersion, maven: mavenVersion) {
                             sh "mvn --version"
                         }
 /*
