@@ -37,6 +37,7 @@ timestamps {
                     echo "\u001B[32m Maven сборка\u001B[m"
                     echo "BRANCH " + fromBranch
                     sh "echo '!!!=== Тут должен быть maven ===!!!'"
+                    sh "ls -la"
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
 /*
                     try {
