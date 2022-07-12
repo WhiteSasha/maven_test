@@ -41,7 +41,7 @@ timestamps {
 //                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
                     
                     withMaven(jdk: javaVersion, maven: mavenVersion) {
-                            sh "mvn --version"
+                            sh "mvn clean -am install -e -X"
                         }
 /*
                     try {
