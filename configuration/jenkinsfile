@@ -13,7 +13,7 @@ def gitBranches = [[name: fromBranch]]
 def gitExtensions = []
 def mavenSettingPath = 'configuration/sigma/settings.xml'
 def mavenSettingSecurityPath = 'configuration/sigma/settings-security.xml'
-def mavenVersion = 'Maven 3.6.1'
+def mavenVersion = 'Maven 3.6.3'
 def javaVersion = 'openjdk-11'
 
 timestamps {
