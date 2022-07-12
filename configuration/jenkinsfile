@@ -30,7 +30,7 @@ timestamps {
                             gitTool                          : 'Default',
                             submoduleCfg                     : [],
                             userRemoteConfigs                : [[credentialsId: gitCredentialsId, url: gitUrl]]]
-                    notifyBitbucket 'INPROGRESS'
+//                    notifyBitbucket 'INPROGRESS'
                 }
 
                 stage('UNIT-TEST') {
