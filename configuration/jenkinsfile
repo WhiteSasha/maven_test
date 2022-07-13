@@ -41,6 +41,7 @@ timestamps {
 //                    notifyBitbucket 'INPROGRESS'
                 }
 
+
                 stage('== UNIT-TEST ==') {
                     echo "\u001B[32m === Maven сборка === \u001B[m"
                     echo "BRANCH " + fromBranch
