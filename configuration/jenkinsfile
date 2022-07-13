@@ -1,4 +1,4 @@
-//devops2
+//devops3
 def gitCredentialsId = 'WhiteSasha_SB_pass'
 def gitUrl = 'https://github.com/WhiteSasha/maven_test.git'
 def fromBranch = params.PULL_REQUEST_FROM_BRANCH
