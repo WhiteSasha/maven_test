@@ -23,6 +23,7 @@ def mavenVersion = 'Maven 3.6.3'
 def javaVersion = 'openjdk-11'
 
 
+
 timestamps {
     ansiColor('xterm') {
         timeout(5) {
