@@ -26,6 +26,8 @@ timestamps {
             node {
                 stage('PREPARE') {
                     echo "\u001B[32 Git checkout \u001B[m"
+                    echo "fromBranch = " fromBranch
+                    echo "gitBranches = " gitBranches
                     checkout changelog: true, poll: true, scm: [
                             $class                           : 'GitSCM',
                             branches                         : gitBranches,
