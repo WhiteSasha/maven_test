@@ -54,7 +54,7 @@ timestamps {
                     
                     withMaven(jdk: javaVersion, maven: mavenVersion) {
                             sh "mvn --help"
-//                            sh "mvn clean -am install -e -X"
+                            sh "mvn clean -am install -e -X"
                         }
 /*
                     try {
@@ -75,6 +75,10 @@ timestamps {
         }
     }
 }
+
+//https://www.jenkins.io/doc/pipeline/steps/stashNotifier/
+//https://github.com/jenkinsci/stashnotifier-plugin
+//https://confluence.atlassian.com/bitbucketserver076/event-payload-1026535078.html?utm_campaign=in-app-help&utm_medium=in-app-help&utm_source=stash#Eventpayload-pullrequest
 
 def notifyBitbucket(String state) {
     if ('SUCCESS' == state || 'FAILED' == state) {
