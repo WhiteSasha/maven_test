@@ -38,7 +38,6 @@ timestamps {
                     echo "BRANCH " + fromBranch
                     sh "echo '!!!=== Тут должен быть maven ===!!!'"
 //                    sh "mvn -version"
-//                    echo "### Временно отключу UNIT-TEST для анализа блокировки ТУЗа ### "
                     
                     withMaven(jdk: javaVersion, maven: mavenVersion) {
                             sh "mvn --help"
