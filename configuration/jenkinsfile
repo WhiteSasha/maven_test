@@ -26,8 +26,8 @@ timestamps {
     ansiColor('xterm') {
         timeout(5) {
             node {
-                stage('PREPARE') {
-                    echo "\u001B[32 Git checkout \u001B[m"
+                stage('==PREPARE==') {
+                    echo "\u001B[32 === Git checkout === \u001B[m"
 //                    echo "fromBranch = " fromBranch
 //                    echo "gitBranches = " gitBranches
                     checkout changelog: true, poll: true, scm: [
@@ -41,8 +41,8 @@ timestamps {
 //                    notifyBitbucket 'INPROGRESS'
                 }
 
-                stage('UNIT-TEST') {
-                    echo "\u001B[32m Maven сборка\u001B[m"
+                stage('== UNIT-TEST ==') {
+                    echo "\u001B[32m === Maven сборка === \u001B[m"
                     echo "BRANCH " + fromBranch
                     sh "echo '!!!=== Тут должен быть maven ===!!!'"
 //                    sh "mvn -version"
