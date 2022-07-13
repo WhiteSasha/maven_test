@@ -9,6 +9,7 @@ def mvnTargetsUnit = 'clean -am install sonar:sonar -P unit-test -e -X'
     // сборка с тестами
 //def  mvnTargetsUnit = 'clean install'
 
+
 def mvnOptions = []
 def gitBranches = [[name: fromBranch]]
 def gitExtensions = []
