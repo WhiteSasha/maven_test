@@ -33,7 +33,7 @@ timestamps {
                     checkout changelog: true, poll: true, scm: [
                             $class                           : 'GitSCM',
 //                            branches                         : gitBranches,
-                            branches                         : [[name:devops2,name:master]],
+                            branches                         : gitBranches,
 
                             doGenerateSubmoduleConfigurations: false,
                             extensions                       : gitExtensions,
