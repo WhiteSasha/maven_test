@@ -25,7 +25,7 @@ timestamps {
     ansiColor('xterm') {
         timeout(5) {
             node {
-                stage('PREPARE') {
+                stage('===PREPARE===') {
                     echo "\u001B[32 Git checkout \u001B[m"
 //                    echo "fromBranch = " fromBranch
                     echo "gitBranches = " gitBranches
@@ -40,7 +40,7 @@ timestamps {
 //                    notifyBitbucket 'INPROGRESS'
                 }
 
-                stage('UNIT-TEST') {
+                stage('===UNIT-TEST===') {
                     echo "\u001B[32m Maven сборка\u001B[m"
                     echo "BRANCH " + fromBranch
                     sh "echo '!!!=== Тут должен быть maven ===!!!'"
