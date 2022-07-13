@@ -32,7 +32,9 @@ timestamps {
                     echo "gitBranches = $gitBranches"
                     checkout changelog: true, poll: true, scm: [
                             $class                           : 'GitSCM',
-                            branches                         : gitBranches,
+//                            branches                         : gitBranches,
+                            branches                         : [[name:devops2],[name:master]],
+
                             doGenerateSubmoduleConfigurations: false,
                             extensions                       : gitExtensions,
                             gitTool                          : 'Default',
