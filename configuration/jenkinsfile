@@ -11,6 +11,7 @@ def mvnTargetsUnit = 'clean -am install sonar:sonar -P unit-test -e -X'
 
 
 
+
 def mvnOptions = []
 def gitBranches = [[name: fromBranch]]
 def gitExtensions = []
